@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckft3jmndmfsm"]
+[gd_scene load_steps=7 format=3 uid="uid://ckft3jmndmfsm"]
 
 [ext_resource type="Texture2D" uid="uid://c626pjnahgohb" path="res://Tiles/fundo_2.png" id="1_phi68"]
 [ext_resource type="Script" path="res://Player/Camera2D.gd" id="2_jqxjg"]
+[ext_resource type="Script" path="res://Scenes/MiniMap.gd" id="3_b5q1x"]
+[ext_resource type="Texture2D" uid="uid://bdftcy8nyevq5" path="res://Tiles/Minimap.png" id="4_x0kph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wq2lj"]
 texture = ExtResource("1_phi68")
@@ -206,3 +208,30 @@ layer_0/tile_data = PackedInt32Array(-1, 131073, 2, 65535, 131073, 3, -65538, 65
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_jqxjg")
+
+[node name="Minimapa" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Minimapa"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Minimapa/SubViewportContainer"]
+size = Vector2i(256, 256)
+script = ExtResource("3_b5q1x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Minimapa/SubViewportContainer/SubViewport"]
+texture_filter = 1
+scale = Vector2(5.35, 5.35)
+texture = ExtResource("4_x0kph")
+
+[node name="Camera2D" type="Camera2D" parent="Minimapa/SubViewportContainer/SubViewport"]

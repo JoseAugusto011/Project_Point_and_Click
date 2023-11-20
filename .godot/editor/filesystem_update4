@@ -1,2 +1,3 @@
 res://Scenes/node_2d.tscn
-res://Player/Camera2D.gd
+res://Scenes/MiniMap.gd
+res://Scenes/LocMAp.gd
